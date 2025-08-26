@@ -5,6 +5,7 @@ import ManageDecks from "./pages/ManageDecks";
 import Settings from "./pages/Settings";
 import Statistics from "./pages/Statistics";
 import Study from "./pages/Study";
+import ContextTest from "./components/test/ContextTest";
 
 function AppRoutes() {
   return (
@@ -15,6 +16,8 @@ function AppRoutes() {
       <Route path="/settings" element={<Settings />} />
       <Route path="/statistics" element={<Statistics />} />
       <Route path="/study" element={<Study />} />
+
+      <Route path="/test-context" element={<ContextTest />} />
       <Route path="*" element={<div>Page Not Found</div>} />
     </Routes>
   );
