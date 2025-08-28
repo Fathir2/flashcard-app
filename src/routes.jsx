@@ -7,6 +7,7 @@ import Statistics from "./pages/Statistics";
 import Study from "./pages/Study";
 import ContextTest from "./components/test/ContextTest";
 import FlashCardDemo from "./components/test/FlashCardDemo";
+import TestForm from "./pages/testForm";
 
 function AppRoutes() {
   return (
@@ -21,6 +22,7 @@ function AppRoutes() {
       {/* Development/Testing Routes */}
       <Route path="/test-context" element={<ContextTest />} />
       <Route path="/test-flashcard" element={<FlashCardDemo />} />
+      <Route path="/test-form" element={<TestForm />} />
       
       {/* 404 */}
       <Route path="*" element={<div>Page Not Found</div>} />

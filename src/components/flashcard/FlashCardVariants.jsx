@@ -65,18 +65,33 @@ export const PreviewFlashCard = ({ cardData, ...props }) => {
 
   return (
     <div className="preview-flashcard">
-      <div className="mb-3 text-center">
-        <span className="inline-block px-3 py-1 bg-gray-100 text-gray-600 text-sm rounded-full font-medium">
-          Preview
+      <div className="mb-4 text-center">
+        <span className="inline-flex items-center px-3 py-1 bg-gradient-to-r from-blue-500 to-purple-600 text-white text-sm rounded-full font-medium shadow-lg">
+          <svg className="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
+          </svg>
+          Live Preview
         </span>
       </div>
       <FlashCard
         card={previewCard}
         size="medium"
         showControls={true}
-        className="mx-auto opacity-90"
+        className="mx-auto"
         {...props}
       />
+      
+      {/* Quick Stats */}
+      <div className="mt-4 flex justify-center">
+        <div className="bg-white/80 backdrop-blur-sm rounded-lg px-4 py-2 border border-gray-200 shadow-sm">
+          <div className="flex items-center gap-4 text-xs text-gray-600">
+            <span>Q: {cardData?.front?.length || 0}/250</span>
+            <span>A: {cardData?.back?.length || 0}/500</span>
+            <span>Hints: {cardData?.hints?.length || 0}</span>
+            <span>Tags: {cardData?.tags?.length || 0}</span>
+          </div>
+        </div>
+      </div>
     </div>
   );
 };
