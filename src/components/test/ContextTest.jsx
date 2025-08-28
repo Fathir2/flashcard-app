@@ -1,5 +1,5 @@
 // src/components/test/ContextTest.jsx - Debug Version
-import React, { useEffect } from 'react';
+import { useEffect } from 'react';
 import { useFlashCard } from '../../context/FlashContext';
 
 const ContextTest = () => {

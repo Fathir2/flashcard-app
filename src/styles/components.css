@@ -1,0 +1,84 @@
+/* Tambahkan ke src/index.css atau buat file terpisah */
+
+/* Custom 3D Transform Utilities */
+.preserve-3d {
+  transform-style: preserve-3d;
+}
+
+.backface-hidden {
+  backface-visibility: hidden;
+}
+
+.rotate-y-180 {
+  transform: rotateY(180deg);
+}
+
+/* FlashCard specific styles */
+.flashcard-container {
+  perspective: 1000px;
+}
+
+/* Hover effects untuk better UX */
+.flashcard-container:hover .flashcard-front,
+.flashcard-container:hover .flashcard-back {
+  transform: scale(1.02);
+}
+
+/* Responsive text sizing */
+@media (max-width: 640px) {
+  .flashcard-container .text-lg {
+    @apply text-base;
+  }
+  
+  .flashcard-container .text-xl {
+    @apply text-lg;
+  }
+}
+
+/* Custom animations */
+@keyframes flipIn {
+  from {
+    transform: rotateY(-90deg);
+    opacity: 0;
+  }
+  to {
+    transform: rotateY(0deg);
+    opacity: 1;
+  }
+}
+
+@keyframes flipOut {
+  from {
+    transform: rotateY(0deg);
+    opacity: 1;
+  }
+  to {
+    transform: rotateY(90deg);
+    opacity: 0;
+  }
+}
+
+/* Smooth flip animation enhancement */
+.flashcard-container [data-side="front"] {
+  animation: flipIn 0.6s ease-in-out;
+}
+
+.flashcard-container [data-side="back"] {
+  animation: flipIn 0.6s ease-in-out;
+}
+
+/* Loading skeleton untuk FlashCard */
+.flashcard-skeleton {
+  background: linear-gradient(90deg, #f0f0f0 25%, #e0e0e0 50%, #f0f0f0 75%);
+  background-size: 200% 100%;
+  animation: loading 1.5s infinite;
+}
+
+@keyframes loading {
+  0% {
+    background-position: 200% 0;
+  }
+  100% {
+    background-position: -200% 0;
+  }
+}

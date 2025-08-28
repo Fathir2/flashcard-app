@@ -1,2 +1,196 @@
 @import "tailwindcss";
 
+/* Custom 3D Transform Utilities for FlashCard */
+.preserve-3d {
+  transform-style: preserve-3d;
+}
+
+.backface-hidden {
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+}
+
+.rotate-y-180 {
+  transform: rotateY(180deg);
+}
+
+/* FlashCard specific styles */
+.flashcard-container {
+  perspective: 1200px;
+  -webkit-perspective: 1200px;
+}
+
+/* Custom scrollbar untuk content yang panjang */
+.scrollbar-thin {
+  scrollbar-width: thin;
+  scrollbar-color: rgba(255, 255, 255, 0.3) transparent;
+}
+
+.scrollbar-thin::-webkit-scrollbar {
+  width: 4px;
+}
+
+.scrollbar-thin::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.scrollbar-thin::-webkit-scrollbar-thumb {
+  background-color: rgba(255, 255, 255, 0.3);
+  border-radius: 2px;
+}
+
+.scrollbar-thin::-webkit-scrollbar-thumb:hover {
+  background-color: rgba(255, 255, 255, 0.5);
+}
+
+/* Text wrapping dan hyphenation support */
+.break-words {
+  word-break: break-word;
+  overflow-wrap: break-word;
+}
+
+/* Responsive text scaling */
+@media (max-width: 640px) {
+  .flashcard-container .text-2xl {
+    @apply text-xl;
+  }
+  
+  .flashcard-container .text-xl {
+    @apply text-lg;
+  }
+  
+  .flashcard-container .text-lg {
+    @apply text-base;
+  }
+}
+
+/* Improved card shadows and effects */
+.flashcard-shadow {
+  box-shadow: 
+    0 20px 25px -5px rgba(0, 0, 0, 0.1),
+    0 10px 10px -5px rgba(0, 0, 0, 0.04),
+    0 0 0 1px rgba(255, 255, 255, 0.1);
+}
+
+.flashcard-shadow:hover {
+  box-shadow: 
+    0 25px 50px -12px rgba(0, 0, 0, 0.25),
+    0 0 0 1px rgba(255, 255, 255, 0.2);
+}
+
+/* Hover effects untuk better UX */
+.flashcard-container:hover .flashcard-front,
+.flashcard-container:hover .flashcard-back {
+  transform: scale(1.02);
+}
+
+/* Responsive text sizing */
+@media (max-width: 640px) {
+  .flashcard-container .text-lg {
+    @apply text-base;
+  }
+  
+  .flashcard-container .text-xl {
+    @apply text-lg;
+  }
+}
+
+/* Enhanced animations */
+@keyframes cardFlipIn {
+  0% {
+    transform: rotateY(-15deg) rotateX(5deg);
+    opacity: 0;
+  }
+  50% {
+    opacity: 0.8;
+  }
+  100% {
+    transform: rotateY(0deg) rotateX(0deg);
+    opacity: 1;
+  }
+}
+
+@keyframes shimmer {
+  0% {
+    background-position: -200% 0;
+  }
+  100% {
+    background-position: 200% 0;
+  }
+}
+
+/* Card hover glow effects */
+.card-glow-blue::before {
+  content: '';
+  position: absolute;
+  inset: -2px;
+  background: linear-gradient(45deg, #3b82f6, #8b5cf6, #06b6d4);
+  border-radius: inherit;
+  z-index: -1;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.card-glow-green::before {
+  content: '';
+  position: absolute;
+  inset: -2px;
+  background: linear-gradient(45deg, #10b981, #059669, #0d9488);
+  border-radius: inherit;
+  z-index: -1;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.flashcard-container:hover .card-glow-blue::before,
+.flashcard-container:hover .card-glow-green::before {
+  opacity: 0.3;
+}
+
+/* Smooth transitions */
+* {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.flashcard-container * {
+  will-change: transform;
+}
+
+/* Smooth flip animation enhancement */
+.flashcard-container [data-side="front"] {
+  animation: flipIn 0.6s ease-in-out;
+}
+
+.flashcard-container [data-side="back"] {
+  animation: flipIn 0.6s ease-in-out;
+}
+
+body {
+  background: #f0f4f8;
+}
+
+/* Loading skeleton untuk FlashCard */
+.flashcard-skeleton {
+  background: linear-gradient(90deg, #f0f0f0 25%, #e0e0e0 50%, #f0f0f0 75%);
+  background-size: 200% 100%;
+  animation: loading 1.5s infinite;
+}
+
+@keyframes loading {
+  0% {
+    background-position: 200% 0;
+  }
+  100% {
+    background-position: -200% 0;
+  }
+}
+
+/* Additional utility classes */
+.flip-card-transition {
+  transition: transform 0.6s cubic-bezier(0.4, 0.0, 0.2, 1);
+}
+
+.card-shadow-hover:hover {
+  box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+}
